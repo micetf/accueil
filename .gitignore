@@ -1,0 +1,73 @@
+# Dépendances
+/node_modules
+/.pnp
+.pnp.js
+
+# Fichiers de build
+/dist
+/build
+/out
+*.local
+
+# Fichiers de cache
+.cache
+.mf
+.rollup.cache
+tsconfig.tsbuildinfo
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Répertoires de couverture de test
+/coverage
+/.nyc_output
+
+# Fichiers d'environnement
+.env
+.env.*
+!.env.example
+
+# Éditeurs et IDEs
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+
+# Fichiers temporaires
+.temp
+.tmp
+.eslintcache
+.stylelintcache
+
+# Fichiers spécifiques à Vite
+/dev-dist
+/.vite
+
+# Dossiers de déploiement spécifiques
+.vercel
+.netlify
+.firebase
+
+# Fichiers générés pendant les tests
+/cypress/videos/
+/cypress/screenshots/
+/playwright-report/
+/test-results/
+
+# Fichiers de configuration locaux
+*.local.json
+*.local.js
