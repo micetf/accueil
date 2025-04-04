@@ -4,7 +4,7 @@ import AppGallery from "./components/AppGallery";
 import SearchBar from "./components/SearchBar";
 import DomainFilter from "./components/DomainFilter";
 import useAppFilter from "./hooks/useAppFilter";
-import { Navbar, Icon, ICONS } from "@micetf/ui";
+import { Navbar } from "@micetf/ui";
 
 // Importer les données depuis les nouveaux emplacements
 import { applications } from "./data/applications";
