@@ -42,6 +42,7 @@ function App() {
                 subtitle="Des outils pour la classe"
                 showHelp={true}
                 onHelpClick={handleShowHelp}
+                showSearch={false}
             />
 
             <Layout>

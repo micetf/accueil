@@ -15,7 +15,6 @@ const AppCard = ({ app }) => {
         setTimeout(() => setCopied(false), 2000);
     };
     const thumbnailUrl = getThumbnailUrl(app.thumbnail);
-    console.log(thumbnailUrl);
 
     return (
         <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg hover:-translate-y-1">

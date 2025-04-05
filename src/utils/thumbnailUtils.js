@@ -1,8 +1,13 @@
-import { THUMBNAIL_PATH, DEFAULT_IMAGE, BASE_URL } from "../data/constants";
+import {
+    THUMBNAIL_PATH,
+    DEFAULT_IMAGE,
+    BASE_URL,
+    APP_BASE_PATH,
+} from "../data/constants";
 
 /**
  * Utilitaire pour obtenir l'URL complète d'une vignette
- * Fonctionne avec la structure où les images sont dans le dossier public/assets
+ * Prend en compte le chemin de base de l'application
  *
  * @param {string} filename - Le nom du fichier de la vignette
  * @returns {string} L'URL complète de la vignette
@@ -17,19 +22,12 @@ export const getThumbnailUrl = (filename) => {
         return filename;
     }
 
-    // Les fichiers dans le dossier public sont accessibles à la racine
-    // Cette approche fonctionne avec Vite
-    try {
-        return `${THUMBNAIL_PATH}${filename}`;
-    } catch (error) {
-        // Fallback sur l'URL externe
-        return `${BASE_URL}/thumbnails/${filename}`;
-    }
+    // Utiliser le chemin relatif à la base de l'application
+    return `${THUMBNAIL_PATH}${filename}`;
 };
 
 /**
  * Vérifie si une miniature existe
- * Note: Dans un environnement réel, il faudrait implémenter une vérification plus robuste
  *
  * @param {string} filename - Nom du fichier image
  * @returns {boolean} True si l'image existe
