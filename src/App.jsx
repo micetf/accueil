@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import AppGallery from "./components/AppGallery";
 import SearchBar from "./components/SearchBar";
 import DomainFilter from "./components/DomainFilter";
+import FilterStats from "./components/FilterStats";
 import useAppFilter from "./hooks/useAppFilter";
 import { Navbar } from "@micetf/ui";
 
@@ -59,7 +60,17 @@ function App() {
                             />
                         </div>
                     </div>
-                    <div className="flex justify-end mt-4">
+                    <div className="flex justify-between items-center mt-4">
+                        <FilterStats
+                            count={filteredApps.length}
+                            totalCount={applications.length}
+                            searchTerm={searchTerm}
+                            selectedDomain={selectedDomain}
+                            domains={domains}
+                            onClearSearchTerm={() => setSearchTerm("")}
+                            onClearDomain={() => setSelectedDomain("")}
+                        />
+
                         <div className="inline-flex shadow-sm rounded-md">
                             <button
                                 className={`px-4 py-2 text-sm font-medium rounded-l-md ${
