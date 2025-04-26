@@ -4,6 +4,9 @@ import AppGallery from "./components/AppGallery";
 import SearchBar from "./components/SearchBar";
 import DomainFilter from "./components/DomainFilter";
 import FilterStats from "./components/FilterStats";
+import Modal from "./components/Modal";
+import HelpContent from "./components/HelpContent";
+import Footer from "./components/Footer";
 import useAppFilter from "./hooks/useAppFilter";
 import { Navbar } from "@micetf/ui";
 
@@ -15,6 +18,7 @@ function App() {
     const [viewMode, setViewMode] = useState("grid"); // 'grid' ou 'list'
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedDomain, setSelectedDomain] = useState("");
+    const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
     const filteredApps = useAppFilter(applications, searchTerm, selectedDomain);
 
@@ -31,9 +35,7 @@ function App() {
     };
 
     const handleShowHelp = () => {
-        alert(
-            "Bienvenue sur MiCetF !\n\nUtilisez la barre de recherche pour trouver des applications par mot-clé.\nFiltrez par domaine thématique avec le menu déroulant.\nChoisissez l'affichage en vignettes ou en liste selon vos préférences."
-        );
+        setIsHelpModalOpen(true);
     };
 
     return (
@@ -103,13 +105,17 @@ function App() {
                     />
                 </main>
 
-                <footer className="mt-12 text-center text-gray-500 text-sm">
-                    <p>
-                        Catalogue d'applications pédagogiques -{" "}
-                        {new Date().getFullYear()}
-                    </p>
-                </footer>
+                <Footer />
             </Layout>
+
+            {/* Modale d'aide */}
+            <Modal
+                isOpen={isHelpModalOpen}
+                onClose={() => setIsHelpModalOpen(false)}
+                title="Aide - Comment utiliser ce catalogue"
+            >
+                <HelpContent />
+            </Modal>
         </div>
     );
 }
