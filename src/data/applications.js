@@ -1214,6 +1214,28 @@ export const applications = [
         ],
     },
     {
+        id: "LectureFlashPartage",
+        title: "Lecture flash (Partage)",
+        url: "lecture-flash-v1",
+        description:
+            "Application de fluence avec partage d'exercices. Travaillez la fluence par effacement progressif des mots. Nouveauté : partagez vos exercices en un clic (CodiMD ou lien direct) avec vos élèves. Modes : réglages modifiables ou imposés. Conforme Eduscol, CP-CM2. (Basé sur les travaux de Julie Meunier : @ptitejulie89)",
+        thumbnail: "lecture-flash-v1.png",
+        keywords: [       
+            "lecture",
+            "flash",
+            "fluence",
+            "français",
+            "partage",
+            "exercice",
+            "lien",
+            "codimd",
+            "enseignant",
+            "élève",
+            "différenciation",
+            "évaluation",
+        ],
+    },
+    {
         id: "LectureHeure",
         title: "Lecture de l'heure",
         url: "LectureHeure",
