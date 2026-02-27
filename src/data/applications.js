@@ -275,6 +275,25 @@ export const applications = [
         keywords: ["cambridge", "dégradation", "divers", "français"],
     },
     {
+        id: "canaux-croises",
+        title: "Canaux croisés",
+        url: "canaux-croises",
+        description:
+            "Trier des situations professionnelles selon le canal d'information le plus pertinent — IAG, moteur de recherche, bibliothèque ou pairs. Un jeu de cartes collaboratif pour débattre des usages de l'IA générative, du cycle 2 à la formation continue.",
+        thumbnail: "canaux-croises.png",
+        keywords: [
+            "intelligence artificielle",
+            "IAG",
+            "formation",
+            "numérique",
+            "tri collaboratif",
+            "canaux d'information",
+            "CPC",
+            "débat",
+            "jeu de cartes",
+        ],
+    },
+    {
         id: "cartapoints",
         title: "Cartes à points",
         url: "cartapoints",
@@ -1118,6 +1137,30 @@ export const applications = [
         ],
     },
     {
+        id: "je-cree-mes-dictees",
+        title: "Je crée mes dictées – Markdown",
+        url: "je-cree-mes-dictees",
+        description:
+            "Créer, partager et faire des dictées en ligne (phrases ou listes de mots) pour l’école primaire, avec lecture audio et format Markdown compatible micetf.fr.",
+        thumbnail: "je-cree-mes-dictees.png",
+        keywords: [
+            "dictées",
+            "dictée en ligne",
+            "je crée mes dictées",
+            "créateur de dictées",
+            "dictée audio",
+            "orthographe",
+            "orthographe lexicale",
+            "école primaire",
+            "cycle 2",
+            "cycle 3",
+            "français",
+            "enseignants",
+            "micetf",
+            "markdown",
+        ],
+    },
+    {
         id: "JeuxLecture",
         title: "Jeux de lecture",
         url: "JeuxLecture",
@@ -1220,7 +1263,7 @@ export const applications = [
         description:
             "Application de fluence avec partage d'exercices. Travaillez la fluence par effacement progressif des mots. Nouveauté : partagez vos exercices en un clic (CodiMD ou lien direct) avec vos élèves. Modes : réglages modifiables ou imposés. Conforme Eduscol, CP-CM2. (Basé sur les travaux de Julie Meunier : @ptitejulie89)",
         thumbnail: "lecture-flash-v1.png",
-        keywords: [       
+        keywords: [
             "lecture",
             "flash",
             "fluence",
@@ -2212,6 +2255,24 @@ export const applications = [
             "Application web permettant de se construire une première représentattion géographique du monde (Système d'Informations Géographiques).",
         thumbnail: "sig.png",
         keywords: ["sig", "géographie", "carte", "divers"],
+    },
+    {
+        id: "similire",
+        title: "SiMiLire",
+        url: "similire",
+        description:
+            "Retrouver parmi plusieurs étiquettes celle qui est identique au modèle — lettres, syllabes ou mots. Un entraînement quotidien pour automatiser le décodage et développer la fluidité de lecture, de la GS au CE2.",
+        thumbnail: "similire.png",
+        keywords: [
+            "discrimination visuelle",
+            "lecture",
+            "fluence",
+            "décodage",
+            "français",
+            "lettres",
+            "syllabes",
+            "mots",
+        ],
     },
     {
         id: "similitexte",
