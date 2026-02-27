@@ -2,8 +2,9 @@ import React from "react";
 import { ExternalLink } from "lucide-react";
 import { getThumbnailUrl } from "../utils/thumbnailUtils";
 import { BASE_URL } from "../data/constants";
+import FavoriteButton from "./FavoriteButton";
 
-const AppList = ({ app }) => {
+const AppList = ({ app, isFavorite, onToggleFavorite }) => {
     const thumbnailUrl = getThumbnailUrl(app.thumbnail);
 
     return (
@@ -22,17 +23,24 @@ const AppList = ({ app }) => {
 
                 <div className="flex-1">
                     <div className="flex justify-between items-start mb-2">
-                        <h3 className="font-bold text-lg text-gray-800">
+                        <h3 className="font-bold text-lg text-gray-800 flex-1 pr-2">
                             {app.title}
                         </h3>
-                        <a
-                            href={`${BASE_URL}/${app.url}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-800 flex items-center gap-1 text-sm"
-                        >
-                            Visiter <ExternalLink size={16} />
-                        </a>
+                        <div className="flex items-center gap-2 flex-shrink-0">
+                            <FavoriteButton
+                                id={app.id}
+                                isFavorite={isFavorite}
+                                onToggle={onToggleFavorite}
+                            />
+                            <a
+                                href={`${BASE_URL}/${app.url}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600 hover:text-blue-800 flex items-center gap-1 text-sm"
+                            >
+                                Visiter <ExternalLink size={16} />
+                            </a>
+                        </div>
                     </div>
 
                     <p className="text-gray-600 mb-2">{app.description}</p>

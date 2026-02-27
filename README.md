@@ -8,6 +8,7 @@ Page d'accueil et catalogue des applications pédagogiques pour le site [MiCetF]
 
 - 📚 Catalogue des applications pédagogiques classées par domaines
 - 🔍 Recherche par mot-clé et par domaine thématique
+- ❤️ Mise en favoris des applications (persistée dans le navigateur)
 - 📱 Interface responsive adaptée à tous les appareils
 - 🎨 Affichage en mode vignettes ou liste
 - 🔗 Intégration facile avec les autres applications du site
@@ -64,8 +65,25 @@ accueil/
 │   │   └── thumbnails/ # Miniatures des applications
 ├── src/                # Code source
 │   ├── components/     # Composants React
+│   │   ├── AppCard.jsx         # Carte application (vue vignettes)
+│   │   ├── AppGallery.jsx      # Grille/liste des applications
+│   │   ├── AppList.jsx         # Ligne application (vue liste)
+│   │   ├── DomainFilter.jsx    # Filtre par domaine
+│   │   ├── FavoriteButton.jsx  # Bouton cœur accessible
+│   │   ├── FilterStats.jsx     # Statistiques de filtrage
+│   │   ├── Footer.jsx          # Pied de page
+│   │   ├── HelpContent.jsx     # Contenu de l'aide
+│   │   ├── Layout.jsx          # Mise en page principale
+│   │   ├── Modal.jsx           # Composant modale générique
+│   │   ├── PrivacyPolicy.jsx   # Politique de confidentialité
+│   │   └── SearchBar.jsx       # Barre de recherche
 │   ├── data/           # Données des applications et constantes
+│   │   ├── applications.js     # Catalogue complet des applications
+│   │   ├── constants.js        # Constantes (URLs, chemins)
+│   │   └── domains.js          # Domaines thématiques
 │   ├── hooks/          # Custom hooks
+│   │   ├── useAppFilter.js     # Filtrage par recherche et domaine
+│   │   └── useFavorites.js     # Gestion des favoris (localStorage)
 │   ├── utils/          # Fonctions utilitaires
 │   ├── App.jsx         # Composant principal
 │   └── main.jsx        # Point d'entrée
@@ -99,7 +117,13 @@ Assurez-vous de placer l'image miniature correspondante dans `public/assets/thum
 Affiche la grille ou la liste des applications filtrées.
 
 ```jsx
-<AppGallery applications={filteredApps} viewMode="grid" />
+<AppGallery
+    applications={filteredApps}
+    viewMode="grid"
+    isFavorite={isFavorite}
+    onToggleFavorite={toggleFavorite}
+    showFavoritesOnly={showFavoritesOnly}
+/>
 ```
 
 ### SearchBar
@@ -121,6 +145,44 @@ Filtre par domaine thématique.
     onDomainChange={handleDomainChange}
 />
 ```
+
+### FavoriteButton
+
+Bouton bascule ❤️ accessible, utilisé dans `AppCard` et `AppList`.
+
+```jsx
+<FavoriteButton
+    id={app.id}
+    isFavorite={isFavorite}
+    onToggle={onToggleFavorite}
+/>
+```
+
+## 🪝 Hooks personnalisés
+
+### useAppFilter
+
+Filtre les applications selon un terme de recherche et un domaine. Mémoïsé avec `useMemo`.
+
+```js
+const filteredApps = useAppFilter(applications, searchTerm, selectedDomain);
+```
+
+### useFavorites
+
+Gère la liste des identifiants d'applications favorites, persistée dans `localStorage`.
+
+```js
+const { favorites, toggleFavorite, isFavorite } = useFavorites();
+```
+
+| Valeur               | Type       | Description                            |
+| -------------------- | ---------- | -------------------------------------- |
+| `favorites`          | `string[]` | Liste des identifiants favoris         |
+| `toggleFavorite(id)` | `Function` | Ajoute ou retire un favori             |
+| `isFavorite(id)`     | `Function` | Retourne `true` si l'app est en favori |
+
+Les favoris sont stockés dans `localStorage` sous la clé `micetf_favorites`. La lecture initiale est paresseuse (via la fonction d'initialisation de `useState`) et les erreurs d'accès au stockage sont silencieuses pour supporter la navigation privée.
 
 ## 🎨 Personnalisation
 

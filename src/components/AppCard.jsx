@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { ExternalLink, Code, Copy, Check } from "lucide-react";
 import { getThumbnailUrl } from "../utils/thumbnailUtils";
 import { BASE_URL } from "../data/constants";
+import FavoriteButton from "./FavoriteButton";
 
-const AppCard = ({ app }) => {
+const AppCard = ({ app, isFavorite, onToggleFavorite }) => {
     const [copied, setCopied] = useState(false);
     const [showEmbedCode, setShowEmbedCode] = useState(false);
 
@@ -14,6 +15,7 @@ const AppCard = ({ app }) => {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
+
     const thumbnailUrl = getThumbnailUrl(app.thumbnail);
 
     return (
@@ -30,9 +32,16 @@ const AppCard = ({ app }) => {
             </div>
 
             <div className="p-4">
-                <h3 className="font-bold text-lg mb-2 text-gray-800">
-                    {app.title}
-                </h3>
+                <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-bold text-lg text-gray-800 flex-1 pr-2">
+                        {app.title}
+                    </h3>
+                    <FavoriteButton
+                        id={app.id}
+                        isFavorite={isFavorite}
+                        onToggle={onToggleFavorite}
+                    />
+                </div>
 
                 <p className="text-gray-600 text-sm mb-4 line-clamp-3">
                     {app.description}
@@ -78,7 +87,6 @@ const AppCard = ({ app }) => {
                         <pre className="text-xs overflow-auto whitespace-pre-wrap">
                             {embedCode}
                         </pre>
-
                         <button
                             onClick={handleCopyCode}
                             className="absolute top-2 right-2 p-1 bg-white rounded-md text-gray-600 hover:text-gray-900 shadow-sm"
